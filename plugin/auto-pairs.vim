@@ -175,13 +175,18 @@ function! AutoPairsInsert(key)
     return a:key
   end
 
+  if current_char != ''
+	return a:key
+  end
+
   " support for ''' ``` and """
   if open == close
     " The key must be ' " `
     let pprev_char = line[col('.')-3]
     if pprev_char == open && prev_char == open
       " Double pair found
-      return repeat(a:key, 4) . repeat(s:Left, 3)
+      " return repeat(a:key, 4) . repeat(s:Left, 3)
+	  return a:key
     end
   end
 
